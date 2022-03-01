@@ -1,3 +1,10 @@
+$(document).ready(readyNow);
+
+function readyNow() {
+  console.log('JQ is running');
+  bonusDisplay();
+}
+
 const employees = [
   {
     name: 'Atticus',
@@ -40,39 +47,39 @@ const employees = [
 // Ask questions when you don't.
 
 
-console.log( employees );
+console.log(employees);
 
 let = employeeBonuses = [];
 
 function newEmployee(employeeArray) {
   let employeeObject = '';
-  for (let i = 0; i < employeeArray.length; i++){
+  for (let i = 0; i < employeeArray.length; i++) {
     employeeObject = {
-    name: employeeArray[i].name,
-    bonusPercentage: 0,
-    totalCompensation: 0,
-    totalBonus: 0
+      name: employeeArray[i].name,
+      bonusPercentage: 0,
+      totalCompensation: 0,
+      totalBonus: 0
     }// end employeeObject
-  employeeBonuses.push(employeeObject);
+    employeeBonuses.push(employeeObject);
   }//end for loop
 }//end newEmployee function
 
-function bonusCalc(employeeArray, bonusArray){
-  for (let i = 0; i < employeeArray.length; i++){
-    if (employeeArray[i].reviewRating < 2){
-    bonusArray[i].bonusPercentage = 0;   
+function bonusCalc(employeeArray, bonusArray) {
+  for (let i = 0; i < employeeArray.length; i++) {
+    if (employeeArray[i].reviewRating < 2) {
+      bonusArray[i].bonusPercentage = 0;
     }//if statement
-    if (employeeArray[i].reviewRating === 3){
-      bonusArray[i].bonusPercentage = 0.04;   
-      }//if statement
-    if (employeeArray[i].reviewRating === 4){
-        bonusArray[i].bonusPercentage = 0.06;   
-        }//if statement
-    if (employeeArray[i].reviewRating === 5){
-      bonusArray[i].bonusPercentage = 0.10;   
-      }//if statement
+    if (employeeArray[i].reviewRating === 3) {
+      bonusArray[i].bonusPercentage = 0.04;
+    }//if statement
+    if (employeeArray[i].reviewRating === 4) {
+      bonusArray[i].bonusPercentage = 0.06;
+    }//if statement
+    if (employeeArray[i].reviewRating === 5) {
+      bonusArray[i].bonusPercentage = 0.10;
+    }//if statement
     if (employeeArray[i].employeeNumber.length === 4) {
-        bonusArray[i].bonusPercentage += 0.05;
+      bonusArray[i].bonusPercentage += 0.05;
     } //if statement
     if (employeeArray[i].annualSalary > 65_000) {
       bonusArray[i].bonusPercentage -= 0.01;
@@ -84,7 +91,7 @@ function bonusCalc(employeeArray, bonusArray){
       bonusArray[i].bonusPercentage = 0;
     } //if statement
     if (bonusArray[i].totalBonus === 0) {
-      bonusArray[i].totalBonus = employeeArray[i].annualSalary * bonusArray[i].bonusPercentage;
+      bonusArray[i].totalBonus = Math.round(employeeArray[i].annualSalary * bonusArray[i].bonusPercentage);
     }
     if (bonusArray[i].totalCompensation === 0) {
       bonusArray[i].totalCompensation = Number(employeeArray[i].annualSalary) + bonusArray[i].totalBonus;
@@ -100,4 +107,16 @@ function bonusCalc(employeeArray, bonusArray){
 
 newEmployee(employees);
 console.log(employeeBonuses);
-console.log(bonusCalc(employees, employeeBonuses));
+bonusCalc(employees, employeeBonuses);
+
+$('#bonusInfo')
+
+function bonusDisplay() {
+  console.log('in bonusDisplay');
+  //target output by ID
+  let bonusList = $('#bonusInfo');
+  //for each info added, create a list item
+  for (let info of employeeBonuses) {
+    bonusList.append(`<li>${info.name} ${info.bonusPercentage} ${info.totalCompensation} ${info.totalBonus}</li>`);
+  }//end for of
+}//end bonusDisplay
