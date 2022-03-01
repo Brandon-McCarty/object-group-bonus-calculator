@@ -71,9 +71,25 @@ function bonusCalc(employeeArray, bonusArray){
     if (employeeArray[i].reviewRating === 5){
       bonusArray[i].bonusPercentage = 0.10;   
       }//if statement
+    if (employeeArray[i].employeeNumber.length === 4) {
+        bonusArray[i].bonusPercentage += 0.05;
+    } //if statement
+    if (employeeArray[i].annualSalary > 65_000) {
+      bonusArray[i].bonusPercentage -= 0.01;
+    } //if statement
+    if (bonusArray[i].bonusPercentage > 0.13) {
+      bonusArray[i].bonusPercentage = 0.13;
+    } //if statement
+    if (bonusArray[i].bonusPercentage < 0) {
+      bonusArray[i].bonusPercentage = 0;
+    } //if statement
+    
     
 }//end for loop
-
+// for (let i = 0; i < employeeArray.length; i++) {}
+//   if (employeeArray[i].employeeNumber.length === 4) {
+//     bonusArray[i].bonusPercentage += 0.05;
+// }
 
 
 }//end bonusCalc function
