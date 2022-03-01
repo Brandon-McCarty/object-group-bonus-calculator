@@ -83,13 +83,17 @@ function bonusCalc(employeeArray, bonusArray){
     if (bonusArray[i].bonusPercentage < 0) {
       bonusArray[i].bonusPercentage = 0;
     } //if statement
-    
-    
-}//end for loop
-// for (let i = 0; i < employeeArray.length; i++) {}
-//   if (employeeArray[i].employeeNumber.length === 4) {
-//     bonusArray[i].bonusPercentage += 0.05;
-// }
+    if (bonusArray[i].totalBonus === 0) {
+      bonusArray[i].totalBonus = employeeArray[i].annualSalary * bonusArray[i].bonusPercentage;
+    }
+    if (bonusArray[i].totalCompensation === 0) {
+      bonusArray[i].totalCompensation = Number(employeeArray[i].annualSalary) + bonusArray[i].totalBonus;
+    }
+  }//end for loop
+
+
+
+
 
 
 }//end bonusCalc function
