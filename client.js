@@ -42,7 +42,7 @@ const employees = [
 
 console.log( employees );
 
-let employeeBonuses = [];
+let = employeeBonuses = [];
 
 function newEmployee(employeeArray) {
   let employeeObject = '';
@@ -57,5 +57,27 @@ function newEmployee(employeeArray) {
   }//end for loop
 }//end newEmployee function
 
+function bonusCalc(employeeArray, bonusArray){
+  for (let i = 0; i < employeeArray.length; i++){
+    if (employeeArray[i].reviewRating < 2){
+    bonusArray[i].bonusPercentage = 0;   
+    }//if statement
+    if (employeeArray[i].reviewRating === 3){
+      bonusArray[i].bonusPercentage = 0.04;   
+      }//if statement
+    if (employeeArray[i].reviewRating === 4){
+        bonusArray[i].bonusPercentage = 0.06;   
+        }//if statement
+    if (employeeArray[i].reviewRating === 5){
+      bonusArray[i].bonusPercentage = 0.10;   
+      }//if statement
+    
+}//end for loop
+
+
+
+}//end bonusCalc function
+
 newEmployee(employees);
 console.log(employeeBonuses);
+console.log(bonusCalc(employees, employeeBonuses));
