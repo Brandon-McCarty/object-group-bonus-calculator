@@ -39,4 +39,23 @@ const employees = [
 // This is not a race. Everyone on your team should understand what is happening.
 // Ask questions when you don't.
 
+
 console.log( employees );
+
+let employeeBonuses = [];
+
+function newEmployee(employeeArray) {
+  let employeeObject = '';
+  for (let i = 0; i < employeeArray.length; i++){
+    employeeObject = {
+    name: employeeArray[i].name,
+    bonusPercentage: 0,
+    totalCompensation: 0,
+    totalBonus: 0
+    }// end employeeObject
+  employeeBonuses.push(employeeObject);
+  }//end for loop
+}//end newEmployee function
+
+newEmployee(employees);
+console.log(employeeBonuses);
